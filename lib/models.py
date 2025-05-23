@@ -28,7 +28,7 @@ if __name__ == '__main__':
 #     pulmonologist = Specialty("Pulmonologist")
 #     nephrologist = Specialty("Nephrologist")
 
-# # Add all at once using bulk_save_objects
+# Add all at once using bulk_save_objects
 # session.bulk_save_objects([
 #     surgeon,
 #     oncologist,
@@ -38,11 +38,23 @@ if __name__ == '__main__':
 #     nephrologist
 # ])
 
-# # Commit the transaction
+# Commit the transaction
 # session.commit()
 
 # # Print the ID of the newly created 'surgeon' specialty
-# print(f"The new specialty ID is {surgeon.id}")
+# # print(f"The new specialty ID is {surgeon.id}")
 
-session.query(Specialty).where(Specialty.id ==3).delete()
-session.commit()
+    specialties = session.query(Specialty).all()
+    print([specialty.name for specialty in specialties])
+    session.commit()
+    
+
+    session.query(Specialty).filter(Specialty.id ==4).update(
+    {Specialty.name:"dentist"}
+    )
+    session.commit()
+
+
+
+# session.query(Specialty).where(Specialty.id ==2).delete()
+# session.commit()
