@@ -19,3 +19,30 @@ if __name__ == '__main__':
 
     Session = sessionmaker(bind=engine)
     session = Session()
+
+#     surgeon = Specialty("Surgeon")
+#     oncologist = Specialty("Oncologist")
+#     cardiologist = Specialty("Cardiologist")
+#     gastroenterologist = Specialty("Gastroenterologist")
+#     nephrologist = Specialty("Nephrologist")
+#     pulmonologist = Specialty("Pulmonologist")
+#     nephrologist = Specialty("Nephrologist")
+
+# # Add all at once using bulk_save_objects
+# session.bulk_save_objects([
+#     surgeon,
+#     oncologist,
+#     cardiologist,
+#     gastroenterologist,
+#     pulmonologist,
+#     nephrologist
+# ])
+
+# # Commit the transaction
+# session.commit()
+
+# # Print the ID of the newly created 'surgeon' specialty
+# print(f"The new specialty ID is {surgeon.id}")
+
+session.query(Specialty).where(Specialty.id ==3).delete()
+session.commit()
